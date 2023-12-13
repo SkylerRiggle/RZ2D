@@ -1,12 +1,11 @@
 #pragma once
 
 #include "../core/Types.h"
-#include "../core/Core.h"
 #include "../debug/Logging.h"
 
 namespace RZ
 {
-    class RZ_API EntityManager
+    class EntityManager
     {
     public:
         EntityManager();
