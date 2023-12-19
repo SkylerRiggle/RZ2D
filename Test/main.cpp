@@ -12,7 +12,7 @@
 int main(int argc, char* argv[])
 {
     printf("\nRunning Test Application...\n");
-    
+
     printf("Tests Completed Successfully!\n\n");
     return 0;
 }
