@@ -6,13 +6,23 @@
  *******************************************************
 */
 
-#include <stdio.h>
+#include <iostream>
 #include "../Razor2D/Razor2D.h"
 
 int main(int argc, char* argv[])
 {
-    printf("\nRunning Test Application...\n");
+    std::cout << "\nRunning Test Application...\n";
 
-    printf("Tests Completed Successfully!\n\n");
+    RZ::ECSCoordinator* coordinator = new RZ::ECSCoordinator();
+
+    EntityId entityA = coordinator->CreateEntity();
+    coordinator->DestroyEntity(entityA);
+    EntityId entityB = coordinator->CreateEntity();
+
+    std::cout << entityA << " " << entityB << '\n';
+
+    delete coordinator;
+
+    std::cout << "Tests Completed Successfully!\n\n";
     return 0;
 }
