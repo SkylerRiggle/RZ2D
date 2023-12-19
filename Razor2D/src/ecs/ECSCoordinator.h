@@ -1,11 +1,12 @@
 #pragma once
 
+#include "../core/Core.h"
 #include "EntityManager.h"
 #include "ComponentManager.h"
 
 namespace RZ
 {
-    class ECSCoordinator
+    class RZ_API ECSCoordinator
     {
     public:
         ECSCoordinator();
