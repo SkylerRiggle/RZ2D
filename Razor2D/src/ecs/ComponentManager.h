@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ComponentArray.h"
+#include "../debug/Logging.h"
 
 namespace RZ
 {
@@ -10,9 +11,9 @@ namespace RZ
      */
     static ComponentId s_componentCounter = 0;
     template <typename T>
-    ComponentId GetComponentId()
+    constexpr ComponentId GetComponentId()
     {
-        ASSERT(s_componentCounter < 65534, "Maximum Number of Component Types Exceeded!");
+        ASSERT(s_componentCounter < MAX_COMPONENT_TYPES, "Maximum Number of Component Types Exceeded!");
         static ComponentId id = s_componentCounter++;
         return id;
     }
@@ -20,7 +21,6 @@ namespace RZ
     class ComponentManager
     {
     public:
-        ComponentManager();
         ~ComponentManager();
 
         void DestroyEntity(EntityId entity);
@@ -28,14 +28,16 @@ namespace RZ
         template <typename T>
         void AddComponent(EntityId entity, T componentData)
         {
-            ComponentArray<T>& arr = this->GetArray<T>();
+            ASSERT(!this->HasComponent<T>(entity), "Attempting to Add Duplicate Component to Entity!");
+
+            ComponentArray<T>* arr = this->GetArray<T>();
 
             if (arr == nullptr)
             {
                 arr = this->CreateArray<T>();
             }
 
-            arr.AddComponent(entity, componentData);
+            arr->AddComponent(entity, componentData);
         }
 
         template <typename T>
@@ -43,8 +45,8 @@ namespace RZ
         {
             ASSERT(this->HasComponent(originalEntity), "Original Entity has no Component to Share!");
 
-            ComponentArray<T>& arr = this->GetArray<T>();
-            arr.ShareComponent(originalEntity, newEntity);
+            ComponentArray<T>* arr = this->GetArray<T>();
+            arr->ShareComponent(originalEntity, newEntity);
         }
 
         template <typename T>
@@ -52,15 +54,15 @@ namespace RZ
         {
             ASSERT(this->HasComponent<T>(entity), "Attempting to Remove Non-Existent Component From Entity!");
 
-            ComponentArray<T>& arr = this->GetArray<T>();
-            arr.RemoveComponent(entity);
+            ComponentArray<T>* arr = this->GetArray<T>();
+            arr->RemoveComponent(entity);
         }
 
         template <typename T>
         bool HasComponent(EntityId entity)
         {
-            ComponentArray<T>& arr = this->GetArray<T>();
-            return (arr == nullptr) ? false : arr.HasComponent(entity);
+            ComponentArray<T>* arr = this->GetArray<T>();
+            return (arr == nullptr) ? false : arr->HasComponent(entity);
         }
 
         template <typename T>
@@ -68,24 +70,27 @@ namespace RZ
         {
             ASSERT(this->HasComponent<T>(entity), "Attempting to Access Non-Existent Component From Entity!");
 
-            ComponentArray<T>& arr = this->GetArray<T>();
-            return arr.GetComponent(entity);
+            ComponentArray<T>* arr = this->GetArray<T>();
+            return arr->GetComponent(entity);
         }
 
     private:
-        IComponentArray* m_arrays;
-        size_t m_numArrays;
+        IComponentArray* m_arrays[MAX_COMPONENT_TYPES];
+        size_t m_numArrays = 0;
 
         template <typename T>
-        ComponentArray<T>& CreateArray()
+        ComponentArray<T>* CreateArray()
         {
-
+            ComponentArray<T>* arr = new ComponentArray<T>();
+            m_arrays[GetComponentId<T>() - 1] = arr;
+            m_numArrays++;
+            return arr;
         }
 
         template <typename T>
-        ComponentArray<T>& GetArray()
+        ComponentArray<T>* GetArray()
         {
-
+            return (ComponentArray<T>*)m_arrays[GetComponentId<T>() - 1];
         }
     };
 }

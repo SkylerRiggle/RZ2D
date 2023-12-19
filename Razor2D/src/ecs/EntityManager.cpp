@@ -15,7 +15,7 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
-    delete m_entityPool;
+    delete [] m_entityPool;
 }
 
 EntityId EntityManager::CreateEntity()
