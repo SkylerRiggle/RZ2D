@@ -14,6 +14,6 @@ void ComponentManager::DestroyEntity(EntityId entity)
 {
     for (const std::pair<const ComponentId, IComponentArray*> pair : m_arrays)
     {
-        // TODO Remove Entity's Components
+        pair.second->EntityDestroyed(entity);
     }
 }
