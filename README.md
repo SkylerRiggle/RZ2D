@@ -19,7 +19,7 @@ rm *.o
 - [ ] Create Nicer Build System (Most likely Makefiles/Bash scripts)
 - [ ] Design Crash Report System
     - [ ] Tie In Logging System
-        - [ ] Timestamps In Log Statements
+        - [X] Timestamps In Log Statements
         - [ ] Cross-Platform Color Support
         - [ ] Possibly Adding Multiple Outputs (Ex: "An error occurred at index: ", idx)
     - [ ] Include Recent Stack Trace On Failed Assertions

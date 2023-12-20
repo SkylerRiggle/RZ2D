@@ -24,12 +24,12 @@ int main(int argc, char* argv[])
     EntityId entityB = coordinator->CreateEntity();
     coordinator->DestroyEntity(entityB);
 
-    ASSERT (entityA == entityB, "Error With Entity ID Stack!");
+    ASSERT(entityA == entityB, "Error With Entity ID Stack!");
 
     entityA = coordinator->CreateEntity();
     entityB = coordinator->CreateEntity();
 
-    ASSERT (entityA != entityB, "Entity IDs Are Not Unique!");
+    ASSERT(entityA != entityB, "Entity IDs Are Not Unique!");
 
     SUCCESS("Entity Creation / Deletion Tests Passed!");
 
