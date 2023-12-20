@@ -28,12 +28,6 @@ namespace RZ
         }
 
         template <typename T>
-        inline void ShareComponent(EntityId originalEntity, EntityId newEntity)
-        {
-            m_componentManager->ShareComponent<T>(originalEntity, newEntity);
-        }
-
-        template <typename T>
         inline void RemoveComponent(EntityId entity)
         {
             m_componentManager->RemoveComponent<T>(entity);

@@ -21,6 +21,7 @@ namespace RZ
             for (size_t idx = 0; idx < MAX_ENTITIES; idx++)
             {
                 m_entityToIndex[idx] = NULL_ENTITY;
+                m_indexToEntity[idx] = NULL_ENTITY;
             }
         }
 
@@ -35,26 +36,23 @@ namespace RZ
         inline void AddComponent(EntityId entity, T componentData)
         {
             m_entityToIndex[entity] = m_size;
+            m_indexToEntity[m_size] = entity;
             m_components[m_size] = componentData;
-            m_componentUses[m_size] = 1;
             m_size++;
-        }
-
-        inline void ShareComponent(EntityId originalEntity, EntityId newEntity)
-        {
-            size_t shareIdx = m_entityToIndex[originalEntity];
-            m_entityToIndex[newEntity] = shareIdx;
-            m_componentUses[shareIdx]++;
         }
 
         inline void RemoveComponent(EntityId entity)
         {
+            m_size--;
             size_t rmvIdx = m_entityToIndex[entity];
-            m_entityToIndex[entity] = NULL_ENTITY;
-            m_componentUses[rmvIdx]--;
-            if (m_componentUses[rmvIdx] > 0) { return; }
+            m_components[rmvIdx] = m_components[m_size];
 
-            // TODO - Compact Component Data Array
+            EntityId lastEntity = m_indexToEntity[m_size];
+            m_indexToEntity[rmvIdx] = lastEntity;
+            m_indexToEntity[m_size] = NULL_ENTITY;
+
+            m_entityToIndex[lastEntity] = rmvIdx;
+            m_entityToIndex[entity] = NULL_ENTITY;
         }
 
         inline bool HasComponent(EntityId entity)
@@ -69,7 +67,7 @@ namespace RZ
 
     private:
         size_t m_entityToIndex[MAX_ENTITIES];
-        size_t m_componentUses[MAX_ENTITIES];
+        EntityId m_indexToEntity[MAX_ENTITIES];
         T m_components[MAX_ENTITIES];
         size_t m_size = 0;
     };

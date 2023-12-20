@@ -32,15 +32,6 @@ namespace RZ
         }
 
         template <typename T>
-        inline void ShareComponent(EntityId originalEntity, EntityId newEntity)
-        {
-            ASSERT(this->HasComponent<T>(originalEntity), "Attempting to Share Non-Existent Component!");
-            ASSERT(!this->HasComponent<T>(newEntity), "Cannot Share Duplicate Component Type to Entity!");
-            ComponentArray<T>* arr = this->GetArray<T>();
-            arr->ShareComponent(originalEntity, newEntity);
-        }
-
-        template <typename T>
         inline void RemoveComponent(EntityId entity)
         {
             ASSERT(this->HasComponent<T>(entity), "Attempting to Remove Non-Existent Component!");

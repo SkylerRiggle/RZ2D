@@ -38,17 +38,6 @@ int main(int argc, char* argv[])
     ASSERT(coordinator->GetComponent<int>(entityA) == 10, "Error Retrieving Entity Component!");
     coordinator->RemoveComponent<int>(entityA);
     ASSERT(!coordinator->HasComponent<int>(entityA), "Error Removing Entity Component!");
-
-    // Shared Component Life-Cycle Test ///////////////////////////////////////
-
-    coordinator->AddComponent<int>(entityA, 5);
-    ASSERT(coordinator->HasComponent<int>(entityA), "Error Creating Shared Entity Component!");
-    coordinator->ShareComponent<int>(entityA, entityB);
-    ASSERT(coordinator->HasComponent<int>(entityB), "Error Sharing Entity Component!");
-    coordinator->GetComponent<int>(entityB) = 7;
-    ASSERT(coordinator->GetComponent<int>(entityA) == 7, "Components Are Not Truly Shared!");
-    coordinator->RemoveComponent<int>(entityA);
-    ASSERT(coordinator->HasComponent<int>(entityB), "Deletion of Entity A's Component Propogated to Entity B!");
     
     coordinator->DestroyEntity(entityA);
     coordinator->DestroyEntity(entityB);
