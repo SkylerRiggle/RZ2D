@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ComponentArray.h"
+#include "../debug/Logging.h"
 #include <unordered_map>
 
 namespace RZ

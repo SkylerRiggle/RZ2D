@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 
     RZ::ECSCoordinator* coordinator = new RZ::ECSCoordinator();
 
-    // Entity Creating / Deletion Test ////////////////////////////////////////
+    // Entity Creating / Deletion Tests ///////////////////////////////////////
 
     EntityId entityA = coordinator->CreateEntity();
     coordinator->DestroyEntity(entityA);
@@ -33,15 +33,19 @@ int main(int argc, char* argv[])
 
     SUCCESS("Entity Creation / Deletion Tests Passed!");
 
-    // Single Component Life-Cycle Test ///////////////////////////////////////
+    // Single Component Life-Cycle Tests //////////////////////////////////////
 
-    coordinator->AddComponent<int>(entityA, 10);
+    const int SOME_DATA = 10;
+
+    coordinator->AddComponent<int>(entityA, SOME_DATA);
     ASSERT(coordinator->HasComponent<int>(entityA), "Error Creating Entity Component!");
-    ASSERT(coordinator->GetComponent<int>(entityA) == 10, "Error Retrieving Entity Component!");
+    ASSERT(coordinator->GetComponent<int>(entityA) == SOME_DATA, "Error Retrieving Entity Component!");
     coordinator->RemoveComponent<int>(entityA);
     ASSERT(!coordinator->HasComponent<int>(entityA), "Error Removing Entity Component!");
 
     SUCCESS("Single Component Life-Cycle Tests Passed!");
+
+    // Cleanup ////////////////////////////////////////////////////////////////
     
     coordinator->DestroyEntity(entityA);
     coordinator->DestroyEntity(entityB);
