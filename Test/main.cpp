@@ -8,12 +8,12 @@
 
 #define RZ_DEBUG
 
-#include <iostream>
 #include "../Razor2D/Razor2D.h"
 
 int main(int argc, char* argv[])
 {
-    std::cout << "\nRunning Test Application...\n";
+    std::cout << '\n';
+    LOG("Running Razor2D Engine Tests...");
 
     RZ::ECSCoordinator* coordinator = new RZ::ECSCoordinator();
 
@@ -31,6 +31,8 @@ int main(int argc, char* argv[])
 
     ASSERT (entityA != entityB, "Entity IDs Are Not Unique!");
 
+    SUCCESS("Entity Creation / Deletion Tests Passed!");
+
     // Single Component Life-Cycle Test ///////////////////////////////////////
 
     coordinator->AddComponent<int>(entityA, 10);
@@ -38,20 +40,14 @@ int main(int argc, char* argv[])
     ASSERT(coordinator->GetComponent<int>(entityA) == 10, "Error Retrieving Entity Component!");
     coordinator->RemoveComponent<int>(entityA);
     ASSERT(!coordinator->HasComponent<int>(entityA), "Error Removing Entity Component!");
+
+    SUCCESS("Single Component Life-Cycle Tests Passed!");
     
     coordinator->DestroyEntity(entityA);
     coordinator->DestroyEntity(entityB);
     delete coordinator;
 
-    // Debug Logging Test /////////////////////////////////////////////////////
-
-    LOG("Logging Statement Works!");
-    WARN("Warning Statement Works!");
-    ASSERT(false, "Assert Statement Works!\nTests Completed Successfully!\n");
-
-    #ifndef RZ_DEBUG
-    std::cout << "Tests Completed Successfully!\n\n";
-    #endif
+    SUCCESS("All Tests Passed!\n");
 
     return 0;
 }
