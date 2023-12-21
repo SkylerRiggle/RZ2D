@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
     coordinator->AddComponent<int>(entityA, SOME_DATA);
     ASSERT(coordinator->HasComponent<int>(entityA), "Error Creating Entity Component!");
     ASSERT(coordinator->GetComponent<int>(entityA) == SOME_DATA, "Error Retrieving Entity Component!");
+    coordinator->GetComponent<int>(entityA) += SOME_DATA;
+    ASSERT(coordinator->GetComponent<int>(entityA) == SOME_DATA + SOME_DATA, "Error Updating Component Data!");
     coordinator->RemoveComponent<int>(entityA);
     ASSERT(!coordinator->HasComponent<int>(entityA), "Error Removing Entity Component!");
 
