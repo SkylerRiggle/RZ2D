@@ -11,6 +11,6 @@ namespace RZ
         void UnRegisterEntity(const ECSCoordinator& coordinator, const EntityId entity);
 
         void UpdateSystem();
-        virtual void Update() = 0;
+        virtual void Update(/** MISSING ARCHETYPE DATA HERE (Collection of Component IDs) */) = 0;
     };
 }

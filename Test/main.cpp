@@ -10,6 +10,16 @@
 
 #include "../Razor2D/Razor2D.h"
 
+// Initializing New Systems ///////////////////////////////////////////////////
+class TestSystem : public RZ::System
+{
+public:
+    void Update() override
+    {
+        // Do cool stuff here
+    }
+};
+
 int main(int argc, char* argv[])
 {
     std::cout << '\n';
@@ -44,6 +54,10 @@ int main(int argc, char* argv[])
     ASSERT(!coordinator->HasComponent<int>(entityA), "Error Removing Entity Component!");
 
     SUCCESS("Single Component Life-Cycle Tests Passed!");
+
+    // System Tests ///////////////////////////////////////////////////////////
+
+    // TODO Write Base System Test
 
     // Cleanup ////////////////////////////////////////////////////////////////
     
