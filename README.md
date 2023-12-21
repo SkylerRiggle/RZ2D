@@ -7,8 +7,8 @@ Razor2D is a mostly experimental engine made to explore the core concepts of bot
 ## Compiling DLL
 
 ```command
-g++ -I .\Razor2D\src\core -I .\Razor2D\src\debug -I .\Razor2D\src\ecs -c .\Razor2D\src\ecs\EntityManager.cpp .\Razor2D\src\ecs\ECSCoordinator.cpp .\Razor2D\src\ecs\ComponentManager.cpp
-g++ -shared -o Razor2D.dll .\EntityManager.o .\ECSCoordinator.o .\ComponentManager.o
+g++ -I .\Razor2D\src\core -I .\Razor2D\src\debug -I .\Razor2D\src\ecs -c .\Razor2D\src\ecs\EntityManager.cpp .\Razor2D\src\ecs\ECSCoordinator.cpp .\Razor2D\src\ecs\ComponentManager.cpp .\Razor2D\src\ecs\System.cpp
+g++ -shared -o Razor2D.dll .\EntityManager.o .\ECSCoordinator.o .\ComponentManager.o .\System.o
 rm *.o
 ```
 
