@@ -11,8 +11,8 @@ namespace RZ
         EntityManager();
         ~EntityManager();
 
-        EntityId CreateEntity();
-        void DestroyEntity(EntityId entity);
+        const EntityId CreateEntity();
+        void DestroyEntity(const EntityId entity);
 
     private:
         EntityId* m_entityPool;

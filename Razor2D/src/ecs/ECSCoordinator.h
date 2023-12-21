@@ -14,33 +14,33 @@ namespace RZ
 
         // ENTITY METHODS /////////////////////////////////////////////////////
 
-        EntityId CreateEntity();
-        void DestroyEntity(EntityId entity);
-        void EnableEntity(EntityId entity);
-        void DisableEntity(EntityId entity);
+        const EntityId CreateEntity();
+        void DestroyEntity(const EntityId entity);
+        void EnableEntity(const EntityId entity);
+        void DisableEntity(const EntityId entity);
 
         // COMPONENT METHODS //////////////////////////////////////////////////
 
         template <typename T>
-        inline void AddComponent(EntityId entity, T componentData) 
+        inline void AddComponent(const EntityId entity, T componentData) 
         { 
             m_componentManager->AddComponent<T>(entity, componentData); 
         }
 
         template <typename T>
-        inline void RemoveComponent(EntityId entity)
+        inline void RemoveComponent(const EntityId entity)
         {
             m_componentManager->RemoveComponent<T>(entity);
         }
 
         template <typename T>
-        inline bool HasComponent(EntityId entity)
+        inline bool HasComponent(const EntityId entity)
         {
             return m_componentManager->HasComponent<T>(entity);
         }
 
         template <typename T>
-        inline T& GetComponent(EntityId entity)
+        inline T& GetComponent(const EntityId entity)
         {
             return m_componentManager->GetComponent<T>(entity);
         }

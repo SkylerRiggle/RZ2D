@@ -9,7 +9,7 @@ namespace RZ
     {
     public:
         virtual ~IComponentArray() = default;
-        virtual void EntityDestroyed(EntityId entity) = 0;
+        virtual void EntityDestroyed(const EntityId entity) = 0;
     };
 
     template <typename T>
@@ -25,7 +25,7 @@ namespace RZ
             }
         }
 
-        inline void EntityDestroyed(EntityId entity) override
+        inline void EntityDestroyed(const EntityId entity) override
         {
             if (this->HasComponent(entity))
             {
@@ -33,7 +33,7 @@ namespace RZ
             }
         }
 
-        inline void AddComponent(EntityId entity, T componentData)
+        inline void AddComponent(const EntityId entity, T componentData)
         {
             m_entityToIndex[entity] = m_size;
             m_indexToEntity[m_size] = entity;
@@ -41,7 +41,7 @@ namespace RZ
             m_size++;
         }
 
-        inline void RemoveComponent(EntityId entity)
+        inline void RemoveComponent(const EntityId entity)
         {
             m_size--;
             size_t rmvIdx = m_entityToIndex[entity];
@@ -55,12 +55,12 @@ namespace RZ
             m_entityToIndex[entity] = NULL_ENTITY;
         }
 
-        inline bool HasComponent(EntityId entity)
+        inline bool HasComponent(const EntityId entity)
         {
             return m_entityToIndex[entity] != NULL_ENTITY;
         }
 
-        inline T& GetComponent(EntityId entity)
+        inline T& GetComponent(const EntityId entity)
         {
             return m_components[m_entityToIndex[entity]];
         }

@@ -14,7 +14,7 @@ ECSCoordinator::~ECSCoordinator()
     delete m_componentManager;
 }
 
-EntityId ECSCoordinator::CreateEntity()
+const EntityId ECSCoordinator::CreateEntity()
 {
     return m_entityManager->CreateEntity();
 }

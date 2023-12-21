@@ -18,16 +18,16 @@ EntityManager::~EntityManager()
     delete [] m_entityPool;
 }
 
-EntityId EntityManager::CreateEntity()
+const EntityId EntityManager::CreateEntity()
 {
     ASSERT(m_topIndex > -1, "Creating More Entities Than Allowed!");
 
-    EntityId entity = m_entityPool[m_topIndex];
+    const EntityId entity = m_entityPool[m_topIndex];
     m_topIndex--;
     return entity;
 }
 
-void EntityManager::DestroyEntity(EntityId entity)
+void EntityManager::DestroyEntity(const EntityId entity)
 {
     ASSERT(m_topIndex + 2 > MAX_ENTITIES, "Destroyed More Entities Than Created!");
 

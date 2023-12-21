@@ -6,22 +6,14 @@
 
 namespace RZ
 {
-    static ComponentId s_componentCounter;
-    template <typename T>
-    static ComponentId GetComponentId()
-    {
-        static ComponentId id = s_componentCounter++;
-        return id;
-    }
-
     class ComponentManager
     {
     public:
         ~ComponentManager();
-        void DestroyEntity(EntityId entity);
+        void DestroyEntity(const EntityId entity);
 
         template <typename T>
-        inline void AddComponent(EntityId entity, T componentData)
+        inline void AddComponent(const EntityId entity, T componentData)
         {
             ComponentArray<T>* arr = this->HasArray<T>()
             ? this->GetArray<T>()
@@ -33,7 +25,7 @@ namespace RZ
         }
 
         template <typename T>
-        inline void RemoveComponent(EntityId entity)
+        inline void RemoveComponent(const EntityId entity)
         {
             ASSERT(this->HasComponent<T>(entity), "Attempting to Remove Non-Existent Component!");
             ComponentArray<T>* arr = this->GetArray<T>();
@@ -41,7 +33,7 @@ namespace RZ
         }
 
         template <typename T>
-        inline bool HasComponent(EntityId entity)
+        inline bool HasComponent(const EntityId entity)
         {
             if (!this->HasArray<T>()) { return false; }
             ComponentArray<T>* arr = this->GetArray<T>();
@@ -49,7 +41,7 @@ namespace RZ
         }
 
         template <typename T>
-        inline T& GetComponent(EntityId entity)
+        inline T& GetComponent(const EntityId entity)
         {
             ASSERT(this->HasComponent<T>(entity), "Attempting to Access Non-Existent Component!");
             ComponentArray<T>* arr = this->GetArray<T>();

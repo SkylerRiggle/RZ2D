@@ -10,7 +10,7 @@ ComponentManager::~ComponentManager()
     }
 }
 
-void ComponentManager::DestroyEntity(EntityId entity)
+void ComponentManager::DestroyEntity(const EntityId entity)
 {
     for (const std::pair<const ComponentId, IComponentArray*> pair : m_arrays)
     {
