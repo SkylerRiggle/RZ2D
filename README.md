@@ -14,16 +14,17 @@ rm *.o
 
 ## Tasks
 
-- [ ] Design System Registration
-- [ ] Design Archetype Enforcement
+- [ ] Entity Component System
+    - [ ] Entity Archetypes
+        - [ ] Design Archetype Structure (List of component ids)
+        - [ ] Enforce Archetypes On System Registration
+    - [ ] Register/Unregister Entity From Systems
+    - [ ] Enable/Disable Entities (Tracks the systems they belong to and temportrily unregister them)
+- [ ] Debugging System
+    - [ ] Crash Reports (Debug logger stack)
+    - [ ] Universal Color Output
+    - [ ] Include Recent Stack Trace On Error
 - [ ] Create Nicer Build System (Most likely Makefiles/Bash scripts)
-- [ ] Design Crash Report System
-    - [ ] Tie In Logging System
-        - [X] Timestamps In Log Statements
-        - [ ] Cross-Platform Color Support
-        - [ ] Possibly Adding Multiple Outputs (Ex: "An error occurred at index: ", idx)
-    - [ ] Include Recent Stack Trace On Failed Assertions
-    - [ ] Defined Assertion Failure Callback (Useful for future applications to do things like sending the crash data to a server)
 
 ## Contact Info.
 
