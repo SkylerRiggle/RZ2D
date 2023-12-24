@@ -2,6 +2,11 @@
 
 using namespace RZ;
 
+System::System(Archetype archetype)
+{
+    
+}
+
 void System::RegisterEntity(const ECSCoordinator& coordinator, const EntityId entity)
 {
 
