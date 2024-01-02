@@ -15,11 +15,14 @@ rm *.o
 ## Tasks
 
 - [ ] Entity Component System
-    - [ ] Entity Archetypes
-        - [ ] Design Archetype Structure (List of component ids)
-        - [ ] Enforce Archetypes On System Registration
-    - [ ] Register/Unregister Entity From Systems
-    - [ ] Enable/Disable Entities (Tracks the systems they belong to and temportrily unregister them)
+    - [ ] Archetype Creation
+        - [ ] Get Unique ID
+        - [ ] Register Component Types
+        - [ ] Make Archetype Specific Entity-to-Component Maps
+    - [ ] Entity Registration to/from Archetype
+    - [ ] System Definition
+        - [ ] Archetype Systems
+        - [ ] Component Systems???
 - [ ] Debugging System
     - [ ] Crash Reports (Debug logger stack)
     - [ ] Universal Color Output

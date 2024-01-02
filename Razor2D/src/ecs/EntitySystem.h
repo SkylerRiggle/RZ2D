@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../core/Core.h"
-#include "../core/Types.h"
 #include "../debug/Logging.h"
+#include "ArchetypeStore.h"
+#include "ComponentStore.h"
 #include <bitset>
-#include <initializer_list>
 
 namespace RZ
 {
@@ -12,6 +12,7 @@ namespace RZ
     {
     public:
         EntitySystem();
+        ~EntitySystem();
 
         // Entity Methods /////////////////////////////////////////////////////
 
@@ -32,6 +33,9 @@ namespace RZ
         void DetachArchetype(const EntityId entity, const Archetype archetype);
 
     private:
+        ArchetypeStore* m_archetypeStore;
+        ComponentStore* m_componentStore;
+
         EntityId m_entityPool[MAX_ENTITIES];
         size_t m_topIndex = MAX_ENTITIES;
         std::bitset<MAX_ENTITIES> m_statuses;

@@ -9,6 +9,15 @@ EntitySystem::EntitySystem()
         m_entityPool[newEntity] = newEntity;
         m_statuses[newEntity] = false;
     }
+
+    m_archetypeStore = new ArchetypeStore();
+    m_componentStore = new ComponentStore();
+}
+
+EntitySystem::~EntitySystem()
+{
+    delete m_archetypeStore;
+    delete m_componentStore;
 }
 
 // Entity Methods /////////////////////////////////////////////////////////////
@@ -50,8 +59,15 @@ const Archetype EntitySystem::CreateArchetype(
     std::initializer_list<ComponentId> components, 
     const size_t capacity
 ) {
-    // TODO
-    return 0;
+    ASSERT(capacity <= MAX_ENTITIES, "Attempting to Create Archetype which Exceeds Maximum Entity Count!");
+    ASSERT(capacity > 0, "Attempting to Create Archetype with no Capacity!");
+
+    for (ComponentId componentId : components)
+    {
+        m_componentStore->RegisterComponent(componentId);
+    }
+
+    return m_archetypeStore->CreateArchetype(components, capacity);
 }
 
 void EntitySystem::AttachArchetype(const EntityId entity, const Archetype archetype)
