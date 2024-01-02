@@ -9,14 +9,9 @@ EntitySystem::EntitySystem()
         m_entityPool[newEntity] = newEntity;
         m_statuses[newEntity] = false;
     }
-
-    m_componentManager = new ComponentManager();
 }
 
-EntitySystem::~EntitySystem()
-{
-    delete[] m_entityPool;
-}
+// Entity Methods /////////////////////////////////////////////////////////////
 
 const EntityId EntitySystem::CreateEntity()
 {
@@ -47,4 +42,24 @@ void EntitySystem::SetEnabled(const EntityId entity, const bool enabled)
 {
     ASSERT(entity < MAX_ENTITIES, "Attempting to Enable/Disable Out-Of-Bounds Entity!");
     m_statuses[entity] = enabled;
+}
+
+// Archetype Methods //////////////////////////////////////////////////////////
+
+const Archetype EntitySystem::CreateArchetype(
+    std::initializer_list<ComponentId> components, 
+    const size_t capacity
+) {
+    // TODO
+    return 0;
+}
+
+void EntitySystem::AttachArchetype(const EntityId entity, const Archetype archetype)
+{
+    // TODO
+}
+
+void EntitySystem::DetachArchetype(const EntityId entity, const Archetype archetype)
+{
+    // TODO
 }

@@ -7,47 +7,9 @@ Razor2D is a mostly experimental engine made to explore the core concepts of bot
 ## Compiling DLL
 
 ```command
-g++ -I .\Razor2D\src\core -I .\Razor2D\src\debug -I .\Razor2D\src\ecs -c .\Razor2D\src\ecs\EntityManager.cpp .\Razor2D\src\ecs\ECSCoordinator.cpp .\Razor2D\src\ecs\ComponentManager.cpp .\Razor2D\src\ecs\System.cpp
-g++ -shared -o Razor2D.dll .\EntityManager.o .\ECSCoordinator.o .\ComponentManager.o .\System.o
+g++ -I .\Razor2D\src\core -I .\Razor2D\src\debug -I .\Razor2D\src\ecs -c .\Razor2D\src\ecs\EntitySystem.cpp
+g++ -shared -o Razor2D.dll .\EntitySystem.o
 rm *.o
-```
-
-## Examples
-
-Currently working on the engine, so this section is more for me to sketch how I'd like the engine to work.
-
-```cpp
-class PlayerSystem : System
-{
-    void Update() override
-    {
-
-    }
-}
-
-void InitScene()
-{
-    // Create a new ECS Coordinator object for this scene
-    ECSCoordinator* coordinator = new ECSCoordinator();
-
-    // Create a player archetype with a capcity of 1 
-    Archetype playerArchetype = coordinator.CreateArchetype(1);
-
-    Archetype player = coorinator.CreateArchetype(1, {
-        GetComponentId<Transform>(),
-        GetComponentId<Velocity>(),
-        GetComponentId<Health>()
-    });
-
-    // Create a new player system
-    PlayerSystem* playerSystem = new PlayerSystem();
-
-    // Create an entity
-    EntityID entity = coordinator.CreateEntity();
-
-    // Register the entity with the player archetype
-    coordinator.SetArchetype(entity, playerArchetype);
-}
 ```
 
 ## Tasks

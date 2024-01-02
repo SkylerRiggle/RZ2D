@@ -71,6 +71,7 @@
         "optional": "cpp",
         "sstream": "cpp",
         "string": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "bitset": "cpp"
     }
 }

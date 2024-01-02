@@ -3,9 +3,8 @@
 #include <stdint.h>
 
 using EntityId = uint32_t;
-using ComponentId = uint8_t;
-using ArchetypeId = uint8_t;
-using Archetype = ComponentId[];
+using ComponentId = uint16_t;
+using Archetype = uint16_t;
 
 constexpr EntityId NULL_ENTITY = EntityId(-1);
 
