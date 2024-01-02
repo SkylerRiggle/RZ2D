@@ -7,7 +7,7 @@
 
 namespace RZ
 {
-    class EntitySystem
+    class RZ_API EntitySystem
     {
     public:
         EntitySystem();
