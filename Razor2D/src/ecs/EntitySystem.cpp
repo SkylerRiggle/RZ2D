@@ -9,6 +9,8 @@ EntitySystem::EntitySystem()
         m_entityPool[newEntity] = newEntity;
         m_statuses[newEntity] = false;
     }
+
+    m_componentManager = new ComponentManager();
 }
 
 EntitySystem::~EntitySystem()
