@@ -16,8 +16,7 @@ namespace RZ
 
         const EntityId CreateEntity();
         void DestroyEntity(const EntityId entity);
-        void EnableEntity(const EntityId entity);
-        void DisableEntity(const EntityId entity);
+        void SetEnabled(const EntityId entity, const bool enabled);
 
         // COMPONENT METHODS //////////////////////////////////////////////////
 

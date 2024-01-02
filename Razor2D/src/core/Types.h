@@ -4,6 +4,7 @@
 
 using EntityId = uint32_t;
 using ComponentId = uint8_t;
+using ArchetypeId = uint8_t;
 using Archetype = ComponentId[];
 
 constexpr EntityId NULL_ENTITY = EntityId(-1);
