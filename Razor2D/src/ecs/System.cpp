@@ -19,5 +19,8 @@ void System::UnRegisterEntity(const ECSCoordinator& coordinator, const EntityId 
 
 void System::UpdateSystem()
 {
-    
+    for (size_t idx = 0; idx < m_numEntities; idx++)
+    {
+        this->Update(m_entities[idx]);
+    }
 }

@@ -14,7 +14,7 @@
 class TestSystem : public RZ::System
 {
 public:
-    void Update() override
+    void Update(EntityId entity) override
     {
         // Do cool stuff here
     }

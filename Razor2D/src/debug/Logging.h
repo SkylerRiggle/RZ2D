@@ -42,6 +42,7 @@ namespace RZ
 #else
 
 #define LOG(msg)
+#define SUCCESS(msg)
 #define WARN(msg)
 #define ASSERT(exp, msg)
 

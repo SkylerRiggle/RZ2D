@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ECSCoordinator.h"
-#include "Archetype.h"
 
 namespace RZ
 {
@@ -14,6 +13,10 @@ namespace RZ
         void UnRegisterEntity(const ECSCoordinator& coordinator, const EntityId entity);
 
         void UpdateSystem();
-        virtual void Update(/** MISSING ARCHETYPE DATA HERE (Collection of Component IDs) */) = 0;
+        virtual void Update(EntityId entity) = 0;
+
+    private:
+        EntityId m_entities[MAX_ENTITIES];
+        size_t m_numEntities;
     };
 }
