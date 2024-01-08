@@ -16,4 +16,3 @@
 #include "./src/debug/Logging.h"
 
 /* ENTITY COMPONENT SYSTEM INCLUDES */
-#include "./src/ecs/EntitySystem.h"

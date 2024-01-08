@@ -12,23 +12,6 @@ g++ -shared -o Razor2D.dll .\EntitySystem.o
 rm *.o
 ```
 
-## Tasks
-
-- [ ] Entity Component System
-    - [ ] Archetype Creation
-        - [ ] Get Unique ID
-        - [ ] Register Component Types
-        - [ ] Make Archetype Specific Entity-to-Component Maps
-    - [ ] Entity Registration to/from Archetype
-    - [ ] System Definition
-        - [ ] Archetype Systems
-        - [ ] Component Systems???
-- [ ] Debugging System
-    - [ ] Crash Reports (Debug logger stack)
-    - [ ] Universal Color Output
-    - [ ] Include Recent Stack Trace On Error
-- [ ] Create Nicer Build System (Most likely Makefiles/Bash scripts)
-
 ## Contact Info.
 
 | Developer | Email | Discord Username |

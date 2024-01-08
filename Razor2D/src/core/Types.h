@@ -2,21 +2,9 @@
 
 #include <stdint.h>
 
-using EntityId = uint32_t;
+using Entity = uint32_t;
 using ComponentId = uint16_t;
-using Archetype = uint16_t;
-
-constexpr EntityId NULL_ENTITY = EntityId(-1);
-
-#ifndef MAX_ENTITIES
-    #define MAX_ENTITIES 1000
-#else 
-
-#if (MAX_ENTITIES == 4294967295U)
-    #define MAX_ENTITIES 4294967294U
-#endif
-
-#endif
+using ArchetypeId = uint16_t;
 
 namespace RZ
 {
