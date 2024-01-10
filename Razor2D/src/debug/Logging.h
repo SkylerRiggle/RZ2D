@@ -10,10 +10,8 @@
     #define RZ_DEBUG_ERROR_CALLBACK()
 #endif
 
-namespace RZ
-{
-    static void LogStatement(const char* tag, const char* msg)
-    {
+namespace RZ {
+    static void LogStatement(const char* tag, const char* msg) {
         time_t epcoh = time(0);
         tm* curTime = localtime(&epcoh);
 

@@ -25,8 +25,7 @@ struct Input {
     float y;
 };
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     std::cout << '\n';
     LOG("Running Razor2D Engine Tests...");
 
