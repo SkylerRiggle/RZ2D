@@ -1,3 +1,8 @@
-#pragma once
+#ifndef RZ_TYPES
+#define RZ_TYPES
 
-using EntityID = unsigned int;
+using RazorID = unsigned int;
+
+using EntityID = RazorID;
+
+#endif

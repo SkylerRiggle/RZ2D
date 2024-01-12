@@ -16,3 +16,6 @@
 #include "./src/debug/Logging.h"
 
 /* ENTITY COMPONENT SYSTEM INCLUDES */
+
+/* UTILITY INCLUDES */
+#include "./src/utils/TypeIDGenerator.h"
